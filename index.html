@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Animated Cable Car</title>
+	<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+	<!-- Inspired by https://dribbble.com/shots/9894256-Ski-Hill/attachments/1927981?mode=media -->
+
+	<div id="canvas"></div>
+	<script id="vertexShader" type="x-shader/x-vertex">
+		varying vec3 vNormal; void main() { vNormal = normalize( normalMatrix * normal ); gl_Position = projectionMatrix * modelViewMatrix
+		* vec4( position, 1.0 ); }
+	</script>
+	<script id="fragmentShader" type="x-shader/x-vertex">
+		varying vec3 vNormal; void main() { float intensity = pow( 0.7 - dot( vNormal, vec3( 0.0, 0.0, 0.5 ) ), 4.0 ); gl_FragColor
+		= vec4( 0.89, 0.82, 0.69, 1.0 ) * intensity; }
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r120/three.min.js">
+	</script>
+	<script src="https://cdn.rawgit.com/mrdoob/three.js/master/examples/js/controls/OrbitControls.js">
+	</script>
+	<script src="https://cdn.rawgit.com/mrdoob/three.js/master/examples/js/loaders/GLTFLoader.js">
+	</script>
+	<script src="script.js">
+	</script>
+</body>
+
+</html>
